@@ -70,7 +70,7 @@ void topView(Node *root){
 void bottomView(Node *root){
     vector<int> ans;
     map<int,int> topNode;//<horizontal distance, node->data>
-    queue<pair<Node*, int>> q;// <node, horizontal distance>
+    queue<pair<Node*, int> > q;//<node, horizontal distance>
     q.push(make_pair(root,0));
 
     while(!q.empty()){
@@ -96,6 +96,46 @@ void bottomView(Node *root){
     }cout<<endl;
 }
 
+//Left view
+void solveLeftView(Node *root, vector<int> &ans, int level){
+    if(root == NULL){
+        return;
+    }
+    if(level == ans.size()){
+        ans.push_back(root->data);
+    }
+    solveLeftView(root->left, ans, level+1);
+    solveLeftView(root->right, ans, level+1);
+}
+void leftView(Node *root){
+    vector<int> ans;
+    solveLeftView(root, ans, 0);
+    cout<<"The Left view is: "<<endl;
+    for(int i=0;i<ans.size();i++){
+        cout<<ans[i]<<" ";
+    }cout<<endl;
+}
+
+
+//Right view
+void solveRightView(Node *root, vector<int> &ans, int level){
+    if(root == NULL){
+        return;
+    }
+    if(level == ans.size()){
+        ans.push_back(root->data);
+    }
+    solveRightView(root->right, ans, level+1);
+    solveRightView(root->left, ans, level+1);
+}
+void rightView(Node *root){
+    vector<int> ans;
+    solveRightView(root, ans, 0);
+    for(int i=0;i<ans.size();i++){
+        cout<<ans[i]<<" ";
+    }cout<<endl;
+}
+
 int main(){
     struct Node* root = new Node(20); 
     root->left = new Node(8);
@@ -112,8 +152,15 @@ int main(){
 
     cout<<"The Top view is: "<<endl;
     topView(root);
+
     cout<<"The Bottom view is: "<<endl;
     bottomView(root);
+
+    cout<<"The Left view is: "<<endl;
+    leftView(root);
+    
+    cout<<"The right view is: "<<endl;
+    rightView(root);
    
 
 
