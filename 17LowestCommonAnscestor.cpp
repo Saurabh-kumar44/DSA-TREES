@@ -84,7 +84,7 @@ int main(){
 }
 /* 
 
-          20      Not Balanced
+          20      LCA of 10 and 14 = 12
         /    \       
        8     22             
      /  \       \
