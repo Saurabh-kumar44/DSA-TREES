@@ -35,62 +35,64 @@ void printLevelOrder(Node *root){
         }
     }
 }
-void solve(Node *root, int len, int &maxLen, int sum, int &maxSum){
+
+void solve(Node *root, int k, int &count, vector<int> &path){
     if(root == NULL){
-        if(len > maxLen){
-            maxLen = len;
-            maxSum = sum;
-        }
-        else if(len == maxLen){
-            maxSum = max(sum, maxSum);
-        }
         return;
     }
-    // cout<<maxSum<<" ";
-    sum = sum + root->data;
-    solve(root->left, len+1, maxLen, sum, maxSum);
-    solve(root->right, len+1, maxLen, sum, maxSum);
-}
-void LongestPathSum(Node *root){
+    path.push_back(root->data);
+
+    solve(root->left, k, count, path);
+    solve(root->right, k,count, path);
+
+    int size = path.size();
     int sum=0;
-    int maxSum=INT_MIN;
-    int len=0;
-    int maxLen=INT_MIN;
-    solve(root, len, maxLen, sum, maxSum);
-    cout<<maxSum<<endl;
+    for(int i = size-1; i >= 0; i--){
+        sum += path[i];
+        if(sum == k){
+            count++;
+        }
+    }
+    path.pop_back();
+    
+}
+
+int sumK(Node *root , int k){
+    vector<int> path;
+    int count = 0;
+    solve(root, k, count, path);
+    return count;
 }
 
 int main(){
-    struct Node* root = new Node(4); 
+    struct Node* root = new Node(1); 
     root->left = new Node(2);
-    root->right = new Node(5);
-    root->right->right = new Node(3);
+    root->right = new Node(-1);
+    root->left->left = new Node(1);
+    root->left->right = new Node(2);
     root->right->left = new Node(3);
-    root->left->left = new Node(7);
-    root->left->right = new Node(1);
-    root->left->right->left = new Node(6);
+    root->right->left->left = new Node(2);
+    root->right->left->right = new Node(5);
 
     cout<<"Levelorder is: "<<endl;
     printLevelOrder(root);
     cout<<endl;
 
-    cout<<"The Longest path sum is: "<<endl;
-    LongestPathSum(root);
-    
-
-
+    cout<<"Total paths sum equal to k is: "<<endl;
+    cout<<sumK(root, 3)<<endl;
+   
 
     return 0;
 }
 /* 
 
-           4     
-         /   \       Longest path sum is: 13
-        2      5             
-      /   \   /  \
-     7     1 2    3
-         /    
-        6    
+           1
+        /     \
+       2       -1
+    /    \     /   
+   1     2    3                             
+            /  \                         
+           2    5        
 */   
    
    

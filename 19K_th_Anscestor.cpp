@@ -35,62 +35,56 @@ void printLevelOrder(Node *root){
         }
     }
 }
-void solve(Node *root, int len, int &maxLen, int sum, int &maxSum){
+
+void solve(Node *root, int k, int n, vector<int> &res){
     if(root == NULL){
-        if(len > maxLen){
-            maxLen = len;
-            maxSum = sum;
-        }
-        else if(len == maxLen){
-            maxSum = max(sum, maxSum);
-        }
         return;
     }
-    // cout<<maxSum<<" ";
-    sum = sum + root->data;
-    solve(root->left, len+1, maxLen, sum, maxSum);
-    solve(root->right, len+1, maxLen, sum, maxSum);
+    if(root->data == n){
+        res.push_back(root->data);
+        cout<<res[res.size()-k-1]<<endl;
+    }
+    res.push_back(root->data);
+    solve(root->left, k, n, res);
+    solve(root->right, k, n, res);
+ 
+    res.pop_back();
 }
-void LongestPathSum(Node *root){
-    int sum=0;
-    int maxSum=INT_MIN;
-    int len=0;
-    int maxLen=INT_MIN;
-    solve(root, len, maxLen, sum, maxSum);
-    cout<<maxSum<<endl;
+
+void k_th_Ansector(Node *root , int k, int n){
+    vector<int> res;
+    int count = 0;
+    solve(root, k, n, res);
 }
 
 int main(){
-    struct Node* root = new Node(4); 
+    struct Node* root = new Node(1); 
     root->left = new Node(2);
-    root->right = new Node(5);
-    root->right->right = new Node(3);
-    root->right->left = new Node(3);
-    root->left->left = new Node(7);
-    root->left->right = new Node(1);
+    root->right = new Node(3);
+    root->left->left = new Node(4);
+    root->left->right = new Node(5);
     root->left->right->left = new Node(6);
+    root->left->right->right = new Node(7);
 
     cout<<"Levelorder is: "<<endl;
     printLevelOrder(root);
     cout<<endl;
 
-    cout<<"The Longest path sum is: "<<endl;
-    LongestPathSum(root);
-    
-
-
+    cout<<"The 2nd Ancestor of 4 is: "<<endl;
+    k_th_Ansector(root, 2, 6);
+   
 
     return 0;
 }
 /* 
 
-           4     
-         /   \       Longest path sum is: 13
-        2      5             
-      /   \   /  \
-     7     1 2    3
-         /    
-        6    
+          1
+        /  \
+       2    3
+     /   \       
+    4     5                                 
+         /  \                         
+        6    7        
 */   
    
    
