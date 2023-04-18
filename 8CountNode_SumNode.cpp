@@ -41,11 +41,20 @@ int countNode(Node *root){
     }
     return countNode(root->left) + countNode(root->right) + 1;
 }
+int sum=0;
 int sumNode(Node *root){
     if(root == NULL){
         return 0;
     }
-    return sumNode(root->left) + sumNode(root->right) + root->data;
+    // return sumNode(root->left) + sumNode(root->right) + root->data;
+         //OR
+    int left = sumNode(root->left);
+    int right = sumNode(root->right);
+    int sum = left + right + root->data;
+    cout<<sum<<" ";
+    return sum;
+
+
 }
 
 int main(){
