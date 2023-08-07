@@ -44,54 +44,50 @@ void printLevelOrder(Node *root)
     }
 }
 
-pair<int, int> solve(Node *root)
-{
-    if (root == NULL){
-        pair<int, int> p = make_pair(0, 0);
-        return p;
+bool isBST(Node *root , Node *min, Node *max){
+    if(root == NULL){
+        return true;
+    }
+    if(min != NULL && root->data <= min->data){
+        return false;
+    }
+    if(max != NULL && root->data >= max->data){
+        return false;
     }
 
-    pair<int, int> left  = solve(root->left);
-    pair<int, int> right = solve(root->right);
+    bool leftValid = isBST(root->left, min, root);
+    bool rightValid = isBST(root->right,root, max);
+    return leftValid and rightValid;
 
-    pair<int, int> ans;
-    ans.first = root->data + left.second + right.second;
-    ans.second = max(left.first, left.second) + max(right.first, right.second);
-
-    return ans;
-}
-
-int max_SumOfNonAdjNode(Node *root)
-{
-    pair<int, int> res = solve(root);
-
-    return max(res.first, res.second);
 }
 
 int main()
 {
-    struct Node *root = new Node(1);
+    struct Node *root = new Node(4);
     root->left = new Node(2);
-    root->right = new Node(3);
-    root->left->left = new Node(4);
-    root->right->left = new Node(5);
+    root->right = new Node(5);
     root->right->right = new Node(6);
+    root->left->left = new Node(1);
+    root->left->right = new Node(3);
 
-    cout << "Levelorder is: " << endl;
+    cout << "Levelorder Before is: " << endl;
     printLevelOrder(root);
     cout << endl;
 
-    cout << "The Max sum of non Adjcent nods is: " << endl;
-    cout<<max_SumOfNonAdjNode(root)<<endl;
+    if(isBST(root, NULL, NULL)){
+        cout<<"It is a BST"<<endl;
+    }
+    else{
+        cout<<"Not a BST"<<endl;
+    }
 
     return 0;
 }
-
 /*
 
-          1
-        /  \
-       2    3
-      /    / \
-     4    5   6
+          4
+         /  \
+        2    5
+       /  \   \
+      1    3   6
 */

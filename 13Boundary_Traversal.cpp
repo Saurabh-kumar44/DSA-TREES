@@ -94,6 +94,7 @@ void traverseRight(Node *root, vector<int> &ans){
     else{
         traverseRight(root->left, ans);
     }
+    // cout<<"D:"<<root->data<<" "<<endl;
     ans.push_back(root->data);
 }
 
@@ -129,8 +130,8 @@ int main(){
     root->left->right->left = new Node(10);
     root->left->right->right = new Node(14);
 
-    cout<<"Levelorder is: "<<endl;
-    printLevelOrder(root);
+    // cout<<"Levelorder is: "<<endl;
+    // printLevelOrder(root);
     cout<<endl;
 
     cout<<"The boundary Nodes are: "<<endl;
@@ -140,8 +141,8 @@ int main(){
 
     return 0;
 }
-/* 
 
+/* 
           20      Not Balanced
         /    \       
        8     22             
@@ -150,8 +151,3 @@ int main(){
         /  \   
        10   14
 */   
-   
-   
-   
-   
-    

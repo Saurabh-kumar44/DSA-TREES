@@ -27,6 +27,7 @@ int hieghtOfTree(struct Node *root){
         return 0;
     }
     int leftHieght  = hieghtOfTree(root->left);
+    cout<<" "<<root->data<<" ";
     int rightHieght = hieghtOfTree(root->right);
     
     int ans = max(leftHieght, rightHieght)+1;

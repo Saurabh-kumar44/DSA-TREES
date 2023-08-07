@@ -70,7 +70,7 @@ int main(){
     printLevelOrder(root);
     cout<<endl;
 
-    cout<<"The 2nd Ancestor of 4 is: "<<endl;
+    cout<<"The 2nd Ancestor of 6 is: "<<endl;
     k_th_Ansector(root, 2, 6);
    
 

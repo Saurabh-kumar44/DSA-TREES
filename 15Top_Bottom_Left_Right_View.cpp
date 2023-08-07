@@ -103,14 +103,17 @@ void solveLeftView(Node *root, vector<int> &ans, int level){
     }
     if(level == ans.size()){
         ans.push_back(root->data);
+        cout<<"P"<<" "<<endl;
     }
+    cout<<"L: "<<level<<" "<<endl;
+    cout<<"S: "<<ans.size()<<" "<<endl;
     solveLeftView(root->left, ans, level+1);
+    cout<<"N"<<"R:"<<root->data<<" "<<endl;
     solveLeftView(root->right, ans, level+1);
 }
 void leftView(Node *root){
     vector<int> ans;
     solveLeftView(root, ans, 0);
-    cout<<"The Left view is: "<<endl;
     for(int i=0;i<ans.size();i++){
         cout<<ans[i]<<" ";
     }cout<<endl;
@@ -146,21 +149,21 @@ int main(){
     root->left->right->left = new Node(10);
     root->left->right->right = new Node(14);
 
-    cout<<"Levelorder is: "<<endl;
-    printLevelOrder(root);
+    // cout<<"Levelorder is: "<<endl;
+    // printLevelOrder(root);
     cout<<endl;
 
-    cout<<"The Top view is: "<<endl;
-    topView(root);
+    // cout<<"The Top view is: "<<endl;
+    // topView(root);
 
-    cout<<"The Bottom view is: "<<endl;
-    bottomView(root);
+    // cout<<"The Bottom view is: "<<endl;
+    // bottomView(root);
 
     cout<<"The Left view is: "<<endl;
     leftView(root);
     
-    cout<<"The right view is: "<<endl;
-    rightView(root);
+    // cout<<"The right view is: "<<endl;
+    // rightView(root);
    
 
 
