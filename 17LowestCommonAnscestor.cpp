@@ -58,7 +58,6 @@ Node* LCA(Node *root, int n1, int n2){
     else{
         return NULL;
     }
-
 }
 
 int main(){

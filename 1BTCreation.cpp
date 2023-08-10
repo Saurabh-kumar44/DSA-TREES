@@ -12,6 +12,7 @@ struct Node{
         right = NULL;
     }
 };
+
 vector<int> arr;
 int order(struct Node* root){
         if(root==NULL){

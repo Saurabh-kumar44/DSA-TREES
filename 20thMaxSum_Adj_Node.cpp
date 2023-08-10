@@ -81,8 +81,8 @@ int main()
     printLevelOrder(root);
     cout << endl;
 
-    cout << "The Max sum of non Adjcent nods is: " << endl;
-    cout<<max_SumOfNonAdjNode(root)<<endl;
+    cout << "The Max sum of non Adjcent nodes is: " << endl;
+    cout<<max_SumOfNonAdjNode(root)<<endl;z z   
 
     return 0;
 }

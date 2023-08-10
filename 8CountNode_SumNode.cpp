@@ -51,7 +51,7 @@ int sumNode(Node *root){
     int left = sumNode(root->left);
     int right = sumNode(root->right);
     int sum = left + right + root->data;
-    cout<<sum<<" ";
+    // cout<<sum<<" ";
     return sum;
 
 

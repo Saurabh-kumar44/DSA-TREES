@@ -50,7 +50,6 @@ void printLevelOrder(Node *root){
 }
 
 void zigZagTrav(Node* root){
-   
     	vector<int> res;
     	queue<Node*> q;
     	q.push(root);

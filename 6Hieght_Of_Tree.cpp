@@ -27,10 +27,11 @@ int hieghtOfTree(struct Node *root){
         return 0;
     }
     int leftHieght  = hieghtOfTree(root->left);
-    cout<<" "<<root->data<<" ";
+    // cout<<" "<<root->data<<" ";
     int rightHieght = hieghtOfTree(root->right);
     
     int ans = max(leftHieght, rightHieght)+1;
+
 
     return ans;
 }
@@ -53,7 +54,7 @@ int main(){
     cout<<"Inorder is: "<<endl;
     inOrder(root);
     cout<<endl;
-    cout<<"The hieght of the Tree is: "<<endl;
+    cout<<"The height of the Tree is: "<<endl;
     cout<<hieghtOfTree(root)<<endl;
 
     return 0;

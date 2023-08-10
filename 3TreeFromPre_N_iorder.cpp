@@ -31,7 +31,7 @@ Node* buildTree(int preorder[], int inorder[], int start, int end){
     }
     int curr = preorder[idx];
     idx++;
-    Node *root = new Node(curr);
+    Node *root = new Node(curr);        
     if(start == end){
         return root;
     }

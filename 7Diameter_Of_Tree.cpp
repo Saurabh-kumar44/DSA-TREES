@@ -35,7 +35,8 @@ void printLevelOrder(Node *root){
         }
     }
 }
-// // //Time complexity = O(n^2) //1
+
+// //Time complexity = O(n^2) //1
 // int hieghtOfTree(struct Node *root){
 //     if(root == NULL){
 //         return 0;
@@ -94,7 +95,7 @@ void printLevelOrder(Node *root){
 //     return 1 + max(lh, rh);
 // }
 // int diameterOfTree(Node *root){
-//     int data = hieght(root);
+//     hieght(root);
 
 //     return ans;
 // }

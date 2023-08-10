@@ -114,8 +114,8 @@ int main()
     root->left->left = new Node(4);
     root->left->right = new Node(5);
 
-    root->right->left = new Node(6);
-    root->right->right = new Node(7);
+    root->left->right->left = new Node(6);
+    root->left->right->right = new Node(7);
 
     cout << "Preorder Using Stack is: " << endl;
     preOrder(root);
@@ -123,8 +123,8 @@ int main()
     cout << "Inorder Using Stack is: " << endl;
     inOrder(root);
     cout << endl;
-    // cout << "Postorder Using Stack is: " << endl;
-    // postOrder(root);
+    cout << "Postorder Using Stack is: " << endl;
+    postOrder(root);
 
     return 0;
 }

@@ -65,7 +65,7 @@ void printLevelOrder(Node *root){
 
         //OR
 //Time complexity = O(n) Optimized //2 
-// first = boolean and second = height
+first = boolean and second = height
 pair<bool , int> isBalanceFast(Node *root){
     if(root == NULL){
         pair<bool, int> p = make_pair(true, 0);
@@ -100,11 +100,11 @@ int main(){
     root->left->left = new Node(4);
     root->left->right = new Node(5);
 
-    // root->left = new Node(2);
-    // root->right = new Node(3);
-    // root->left->left = new Node(4);
-    // root->left->right = new Node(5);
-    // root->left->left->left = new Node(6);
+    root->left = new Node(2);
+    root->right = new Node(3);
+    root->left->left = new Node(4);
+    root->left->right = new Node(5);
+    root->left->left->left = new Node(6);
 
     cout<<"Levelorder is: "<<endl;
     printLevelOrder(root);

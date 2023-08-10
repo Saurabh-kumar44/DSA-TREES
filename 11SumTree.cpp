@@ -55,7 +55,7 @@ pair<bool,int> isSumTreeFast(Node* root) {
         return p;
     }
     if(root->left == NULL && root->right == NULL ) {
-        cout<<"d:"<<root->data<<" ";
+        // cout<<"d:"<<root->data<<" ";
         pair<bool,int> p = make_pair(true, root->data);
         return p;
     }
